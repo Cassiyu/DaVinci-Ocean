@@ -254,5 +254,46 @@ Autentica o usuário e retorna um token de acesso.
 |401| Credenciais inválidas
 ---
 
+### Cadastrar Usuário
+
+`POST` /usuario
+
+Cadastra um novo usuário com os dados enviados no corpo da requisição.
+
+#### Corpo da Requisição
+
+|campo|tipo|obrigatório|descrição|
+|-----|----|:-----------:|---------|
+|nome|string|✅|Nome do usuário|
+|email|string|✅|E-mail do usuário|
+|senha|string|✅|Senha do usuário|
+
+#### Exemplo de Requisição
+
+```json
+{
+    "nome": "Usuário Exemplo",
+    "email": "usuario@example.com",
+    "senha": "senha123"
+}
+```
+
+#### Exemplo de Resposta
+
+```json
+{
+    "id": 1,
+    "nome": "Usuário Exemplo",
+    "email": "usuario@example.com"
+}
+```
+
+#### Códigos de Status
+
+|código|descrição|
+|------|---------|
+|201| Usuário cadastrado com sucesso|
+|400| Validação falhou. Verifique o corpo da requisição|
+
 
 
