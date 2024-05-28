@@ -10,5 +10,5 @@ import br.com.fiap.oceanapi.model.Sensor;
 
 @Repository
 public interface SensorRepository extends JpaRepository<Sensor, Long> {
-    List<Sensor> findByDataLocalizacao(LocalDateTime dataInicio, LocalDateTime dataFim, String localizacao);
+    List<Sensor> findByDataBetweenAndLocalizacao(LocalDateTime dataInicio, LocalDateTime dataFim, String localizacao);
 }

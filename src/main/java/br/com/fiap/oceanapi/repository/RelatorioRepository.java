@@ -6,5 +6,4 @@ import br.com.fiap.oceanapi.model.Relatorio;
 
 @Repository
 public interface RelatorioRepository extends JpaRepository<Relatorio, Long> {
-    
 }

@@ -31,22 +31,22 @@ public class DatabaseSeeder implements CommandLineRunner {
                         Sensor.builder()
                                 .data(LocalDateTime.now().minusDays(1))
                                 .temperatura(25.5)
-                                .coordenadas("40.7128° N, 74.0060° W")
+                                .localizacao("40.7128° N, 74.0060° W")
                                 .build(),
                         Sensor.builder()
                                 .data(LocalDateTime.now().minusDays(2))
                                 .temperatura(24.8)
-                                .coordenadas("34.0522° N, 118.2437° W")
+                                .localizacao("34.0522° N, 118.2437° W")
                                 .build(),
                         Sensor.builder()
                                 .data(LocalDateTime.now().minusDays(3))
                                 .temperatura(26.3)
-                                .coordenadas("41.8781° N, 87.6298° W")
+                                .localizacao("41.8781° N, 87.6298° W")
                                 .build(),
                         Sensor.builder()
                                 .data(LocalDateTime.now().minusDays(4))
                                 .temperatura(23.7)
-                                .coordenadas("51.5074° N, 0.1278° W")
+                                .localizacao("51.5074° N, 0.1278° W")
                                 .build()
                 )
         );

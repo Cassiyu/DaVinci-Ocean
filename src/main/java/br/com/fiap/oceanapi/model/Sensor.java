@@ -29,6 +29,6 @@ public class Sensor {
 
     private Double temperatura;
 
-    private String coordenadas;
+    private String localizacao;
 
 }

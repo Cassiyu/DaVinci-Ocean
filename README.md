@@ -39,7 +39,7 @@ Retorna um array com todos os sensores cadastrados.
         "sensorId": 1,
         "data": "27-05-2024T14:00:00",
         "temperatura": 25.5,
-        "coordenadas": "-23.5505, -46.6333"
+        "localizacao": "-23.5505, -46.6333"
     }   
 ]
 ```
@@ -63,7 +63,7 @@ Cadastra um sensor com os dados enviados no corpo da requisição.
 |-----|----|:-----------:|---------
 |data|datetime|✅|Data e hora da leitura
 |temperatura|double|✅|Temperatura registrada pelo sensor
-|coordenadas|string|✅|Coordenadas do sensor
+|localizacao|string|✅|localização do sensor
 
 #### Exemplo de Requisição
 ```js
@@ -71,7 +71,7 @@ Cadastra um sensor com os dados enviados no corpo da requisição.
 {
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "coordenadas": "-23.5505, -46.6333"
+    "localizacao": "-23.5505, -46.6333"
 }
 ```
 
@@ -81,7 +81,7 @@ Cadastra um sensor com os dados enviados no corpo da requisição.
     "sensorId": 1,
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "coordenadas": "-23.5505, -46.6333"
+    "localizacao": "-23.5505, -46.6333"
 }
 ```
 
@@ -107,7 +107,7 @@ Retorna os detalhes do sensor com o `id` informado no path.
     "sensorId": 1,
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "coordenadas": "-23.5505, -46.6333"
+    "localizacao": "-23.5505, -46.6333"
 }
 
 ```
@@ -148,7 +148,7 @@ Atualiza os dados do sensor com o `id` informado no path, utilizando as informa�
 |-----|----|:-----------:|---------
 |data|datetime|✅|Nova data e hora da leitura
 |temperatura|double|✅|Nova temperatura registrada pelo sensor
-|coordenadas|string|✅|Novas coordenadas do sensor
+|localizacao|string|✅|Novas localizações do sensor
 
 #### Exemplo de Requisição
 ```js
@@ -156,7 +156,7 @@ Atualiza os dados do sensor com o `id` informado no path, utilizando as informa�
 {
     "data": "28-05-2024T14:00:00",
     "temperatura": 26.0,
-    "coordenadas": "-23.5505, -46.6333"
+    "localizacao": "-23.5505, -46.6333"
 }
 ```
 
@@ -166,7 +166,7 @@ Atualiza os dados do sensor com o `id` informado no path, utilizando as informa�
     "sensorId": 1,
     "data": "28-05-2024T14:00:00",
     "temperatura": 26.0,
-    "coordenadas": "-23.5505, -46.6333"
+    "localizacao": "-23.5505, -46.6333"
 }
 ```
 

@@ -18,12 +18,12 @@ public class RelatorioService {
     private SensorRepository sensorRepository;
 
     public Relatorio gerarRelatorio(LocalDateTime dataInicio, LocalDateTime dataFim, String localizacao) {
-        List<Sensor> sensores = sensorRepository.findByDataLocalizacao(dataInicio, dataFim, localizacao);
-
+        List<Sensor> sensores = sensorRepository.findByDataBetweenAndLocalizacao(dataInicio, dataFim, localizacao);
+    
         OptionalDouble temperaturaMedia = sensores.stream().mapToDouble(Sensor::getTemperatura).average();
         OptionalDouble temperaturaMaxima = sensores.stream().mapToDouble(Sensor::getTemperatura).max();
         OptionalDouble temperaturaMinima = sensores.stream().mapToDouble(Sensor::getTemperatura).min();
-
+        
         return Relatorio.builder()
                 .dataInicio(dataInicio)
                 .dataFim(dataFim)
