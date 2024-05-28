@@ -2,6 +2,32 @@
 
 API do Projeto DaVinci Ocean - Sistema de Monitoramento e Conservação dos Habitats Marinhos
 
+## Integrantes
+ 
+- RM550341 - Allef Santos (2TDSPV) 
+- RM551491 - Cassio Yuji Hirassike Sakai 
+- RM97836  - Debora Damasso Lopes 
+- RM550323 - Paulo Barbosa Neto 
+- RM552314 - Yasmin Araujo Santos Lopes
+
+## Competência 
+
+- Allef - Java Advanced e Mastering Relational AND Non-Relational DataBase
+
+- Cassio Y.H. Sakai - Java Advanced e Mobile Application Development
+
+- Debora D. Lopes - Advanced Business Development With .NET e Disruptive Architectures: IOT, IOB & GENERATIVE IA 
+
+- Paulo B. Neto - Mastering Relational AND Non-Relational DataBase
+
+- Yasmin A. S. Lopes - Compliance, Quality Assurance & Tests e DevOps Tools & Cloud Computing
+
+## Objetivo do Projeto
+
+O Projeto DaVinci Ocean tem como objetivo desenvolver uma plataforma de monitoramento avançado das temperaturas dos oceanos, visando compreender e mitigar os impactos das mudanças climáticas nos ecossistemas marinhos, especialmente nos corais. A proposta central é coletar dados em tempo real das temperaturas oceânicas em diferentes regiões do mundo e analisar essas informações para identificar padrões, tendências e anomalias que possam afetar a saúde dos corais.
+
+O público-alvo do Projeto DaVinci Ocean são cientistas, pesquisadores e empresas que estão interessados em monitorar e proteger os ecossistemas marinhos, especialmente os recifes de coral. Ao fornecer dados precisos e atualizados sobre as temperaturas dos oceanos, a plataforma permite uma compreensão mais profunda dos impactos das mudanças climáticas nos corais e nas comunidades marinhas, facilitando a implementação de medidas de conservação e adaptação.
+
 ## Requisitos
 
 - [ ] CRUD de Sensores
