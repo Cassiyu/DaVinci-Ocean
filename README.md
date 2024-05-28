@@ -31,10 +31,8 @@ O público-alvo do Projeto DaVinci Ocean são cientistas, pesquisadores e empres
 ## Requisitos
 
 - [ ] CRUD de Sensores
-- [ ] CRUD de Relatórios
-- [ ] CRUD de Usuários
-- [ ] Autenticação
-- [ ] Dashboard
+- [ ] Geração de Relatórios 
+- [ ] Cadastro e Autenticação de Usuários
 
 ## Documentação da API
 
