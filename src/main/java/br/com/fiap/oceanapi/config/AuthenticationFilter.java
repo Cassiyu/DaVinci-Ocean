@@ -27,13 +27,21 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         var token = getToken(request);
-        log.info(token);
+        log.info("Token obtido: {}", token);
 
         if (token != null) {
             Usuario user = tokenService.validateToken(token);
-            Authentication auth = user.toAuthentication();
-            SecurityContextHolder.getContext().setAuthentication(auth);
+            if (user != null) {
+                Authentication auth = user.toAuthentication();
+                SecurityContextHolder.getContext().setAuthentication(auth);
+                log.info("Autenticação bem-sucedida para o usuário: {}", user.getUsername());
+            } else {
+                log.warn("Token inválido ou usuário não encontrado");
+            }
+        } else {
+            log.warn("Nenhum token presente na solicitação");
         }
+        
         filterChain.doFilter(request, response);
     }
 
@@ -41,12 +49,10 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         var header = request.getHeader("Authorization");
         log.info("Header = {}", header);
 
-        if (header == null || !header.startsWith("Bearer "))
+        if (header == null || !header.startsWith("Bearer ")) {
             return null;
+        }
 
-        var token = header.replace("Bearer ", "");
-
-        return token;
+        return header.replace("Bearer ", "");
     }
-
 }

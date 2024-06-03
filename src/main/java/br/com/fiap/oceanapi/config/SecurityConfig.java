@@ -18,13 +18,14 @@ public class SecurityConfig {
     AuthenticationFilter authenticationFilter;
 
     @Bean
-    SecurityFilterChain web(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login", "/usuario").permitAll()
-                        .anyRequest().authenticated())
-                .csrf(csrf -> csrf.disable())
-                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/login", "/usuario").permitAll()
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -38,5 +39,4 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
