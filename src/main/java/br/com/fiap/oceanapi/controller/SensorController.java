@@ -4,7 +4,10 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -92,5 +95,24 @@ public class SensorController {
             throw new ResponseStatusException(NOT_FOUND, "Sensor não encontrado");
         }
         sensorRepository.deleteById(id);
+    }
+
+    @GetMapping("/mock")
+    @Operation(summary = "Simular Dados do Sensor", description = "Retorna dados simulados do sensor.")
+    public List<Sensor> simulateSensorData() {
+        List<Sensor> sensors = new ArrayList<>();
+        Random random = new Random();
+        
+        for (int i = 0; i < 10; i++) {
+            Sensor sensor = Sensor.builder()
+                    .sensor_id((long) i + 1)
+                    .data(LocalDateTime.now().minusMinutes(i * 10))
+                    .temperatura(15 + (40 - 15) * random.nextDouble()) 
+                    .localizacao("Localizacao " + (i + 1))
+                    .build();
+            sensors.add(sensor);
+        }
+
+        return sensors;
     }
 }
