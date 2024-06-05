@@ -77,7 +77,7 @@ public class SensorController {
         if (!sensorRepository.existsById(id)) {
             throw new ResponseStatusException(NOT_FOUND, "Sensor não encontrado");
         }
-        sensor.setSensorId(id);
+        sensor.setSensor_id(id);
         Sensor updatedSensor = sensorRepository.save(sensor);
         return ResponseEntity.ok(updatedSensor);
     }

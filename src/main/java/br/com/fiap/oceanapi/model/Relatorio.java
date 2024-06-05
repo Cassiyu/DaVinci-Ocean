@@ -25,7 +25,7 @@ public class Relatorio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long relatorioId;
+    private Long relatorio_id;
     
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime dataInicio;

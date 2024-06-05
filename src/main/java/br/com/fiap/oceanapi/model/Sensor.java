@@ -24,7 +24,7 @@ public class Sensor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long sensorId;
+    private Long sensor_id;
 
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     private LocalDateTime data;
