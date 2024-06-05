@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/relatorio")
+@RequestMapping("relatorio")
 @Tag(name = "relatorio")
 public class RelatorioController {
 

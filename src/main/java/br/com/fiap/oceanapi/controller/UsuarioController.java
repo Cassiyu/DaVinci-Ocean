@@ -17,9 +17,14 @@ import br.com.fiap.oceanapi.repository.UsuarioRepository;
 import br.com.fiap.oceanapi.service.TokenService;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Log4j2
+@Tag(name = "usuario")
 public class UsuarioController {
 
     @Autowired
@@ -35,6 +40,11 @@ public class UsuarioController {
     PasswordEncoder encoder;
 
     @PostMapping("/login")
+    @Operation(summary = "Autenticar Usuário", description = "Autentica o usuário e gera um token de acesso.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuário autenticado com sucesso"),
+            @ApiResponse(responseCode = "401", description = "Credenciais inválidas")
+    })
     public ResponseEntity<Token> login(@RequestBody Credenciais credenciais) {
         log.info(credenciais);
         authManager.authenticate(credenciais.toAuthentication());
@@ -42,6 +52,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/usuario")
+    @Operation(summary = "Cadastrar Usuário", description = "Cadastra um novo usuário no sistema.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Usuário cadastrado com sucesso")
+    })
     public ResponseEntity<UsuarioResponse> create(@RequestBody @Valid Usuario usuario) {
         usuario.setSenha(encoder.encode(usuario.getSenha()));
         repository.save(usuario);
