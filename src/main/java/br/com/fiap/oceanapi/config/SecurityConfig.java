@@ -22,7 +22,7 @@
             http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers("/login", "/usuario", "/docs/**", "/swagger-ui/**", "/v3/**", "/relatorio/**", "/sensor/**").permitAll()
+                    .requestMatchers("/**", "/login", "/usuario", "/docs/**", "/swagger-ui/**", "/v3/**", "/relatorio/**", "/sensor/**").permitAll()
                     .anyRequest().authenticated()
                 )
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
