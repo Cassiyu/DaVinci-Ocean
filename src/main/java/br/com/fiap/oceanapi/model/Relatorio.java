@@ -28,16 +28,16 @@ public class Relatorio {
     private Long relatorio_id;
     
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
-    private LocalDateTime dataInicio;
+    private LocalDateTime data_inicio;
     
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
-    private LocalDateTime dataFim;
+    private LocalDateTime data_fim;
     
     private String localizacao;
     
-    private Double temperaturaMedia;
+    private Double temperatura_media;
     
-    private Double temperaturaMaxima;
+    private Double temperatura_maxima;
     
-    private Double temperaturaMinima;
+    private Double temperatura_minima;
 }
