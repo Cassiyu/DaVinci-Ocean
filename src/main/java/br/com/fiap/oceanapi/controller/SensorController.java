@@ -27,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.oceanapi.model.Sensor;
 import br.com.fiap.oceanapi.repository.SensorRepository;
+import br.com.fiap.oceanapi.model.dto.SensorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -46,9 +47,14 @@ public class SensorController {
     @GetMapping
     @Cacheable
     @Operation(summary = "Listar Sensores", description = "Retorna um array com todos os sensores.")
-    public List<Sensor> listAllSensors() {
+    public List<SensorResponse> listAllSensors() {
         log.info("Listando todos os sensores");
-        return sensorRepository.findAll();
+        List<Sensor> sensors = sensorRepository.findAll();
+        List<SensorResponse> sensorResponses = new ArrayList<>();
+        for (Sensor sensor : sensors) {
+            sensorResponses.add(SensorResponse.fromSensor(sensor));
+        }
+        return sensorResponses;
     }
 
     @PostMapping
@@ -58,31 +64,32 @@ public class SensorController {
             @ApiResponse(responseCode = "400", description = "Validação falhou. Verifique o corpo da requisição")
     })
     @CacheEvict(allEntries = true)
-    public Sensor createSensor(@RequestBody Sensor sensor) {
+    public SensorResponse createSensor(@RequestBody Sensor sensor) {
         log.info("Cadastrando sensor {}", sensor);
-        return sensorRepository.save(sensor);
+        Sensor savedSensor = sensorRepository.save(sensor);
+        return SensorResponse.fromSensor(savedSensor);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Buscar Sensor por ID", description = "Retorna um sensor pelo seu ID.")
-    public ResponseEntity<Sensor> getSensorById(@PathVariable Long id) {
+    public ResponseEntity<SensorResponse> getSensorById(@PathVariable Long id) {
         log.info("Buscando sensor com id {} ", id);
         return sensorRepository.findById(id)
-                .map(ResponseEntity::ok)
+                .map(sensor -> ResponseEntity.ok(SensorResponse.fromSensor(sensor)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
     @CacheEvict(allEntries = true)
     @Operation(summary = "Atualizar Sensor", description = "Atualiza um sensor existente pelo seu ID.")
-    public ResponseEntity<Sensor> updateSensor(@PathVariable Long id, @RequestBody Sensor sensor) {
+    public ResponseEntity<SensorResponse> updateSensor(@PathVariable Long id, @RequestBody Sensor sensor) {
         log.info("Atualizando sensor com id {} para {}", id, sensor);
         if (!sensorRepository.existsById(id)) {
             throw new ResponseStatusException(NOT_FOUND, "Sensor não encontrado");
         }
         sensor.setSensor_id(id);
         Sensor updatedSensor = sensorRepository.save(sensor);
-        return ResponseEntity.ok(updatedSensor);
+        return ResponseEntity.ok(SensorResponse.fromSensor(updatedSensor));
     }
 
     @DeleteMapping("/{id}")
@@ -101,10 +108,10 @@ public class SensorController {
     public List<Sensor> getMockSensors() {
         List<Sensor> sensors = new ArrayList<>();
         Random random = new Random();
-        
-        for (int i = 0; i < 9; i++) { 
+
+        for (int i = 0; i < 9; i++) {
             String localizacao = "Recife " + (i + 1);
-            
+
             Sensor sensor = Sensor.builder()
                     .data(LocalDateTime.now())
                     .temperatura(15 + random.nextDouble() * 10)
@@ -114,5 +121,5 @@ public class SensorController {
         }
         return sensors;
     }
-    
+
 }
