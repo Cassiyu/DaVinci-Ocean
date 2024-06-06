@@ -102,10 +102,8 @@ public class SensorController {
         List<Sensor> sensors = new ArrayList<>();
         Random random = new Random();
         
-        for (int i = 0; i < 10; i++) {
-            double latitude = -90 + (90 - (-90)) * random.nextDouble();
-            double longitude = -180 + (180 - (-180)) * random.nextDouble();
-            String localizacao = String.format("%.4f, %.4f", latitude, longitude);
+        for (int i = 0; i < 9; i++) { 
+            String localizacao = "Recife " + (i + 1);
             
             Sensor sensor = Sensor.builder()
                     .data(LocalDateTime.now())
@@ -116,4 +114,5 @@ public class SensorController {
         }
         return sensors;
     }
+    
 }
