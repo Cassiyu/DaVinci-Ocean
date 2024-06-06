@@ -98,21 +98,22 @@ public class SensorController {
     }
 
     @GetMapping("/mock")
-    @Operation(summary = "Simular Dados do Sensor", description = "Retorna dados simulados do sensor.")
-    public List<Sensor> simulateSensorData() {
+    public List<Sensor> getMockSensors() {
         List<Sensor> sensors = new ArrayList<>();
         Random random = new Random();
         
         for (int i = 0; i < 10; i++) {
+            double latitude = -90 + (90 - (-90)) * random.nextDouble();
+            double longitude = -180 + (180 - (-180)) * random.nextDouble();
+            String localizacao = String.format("%.4f, %.4f", latitude, longitude);
+            
             Sensor sensor = Sensor.builder()
-                    .sensor_id((long) i + 1)
-                    .data(LocalDateTime.now().minusMinutes(i * 10))
-                    .temperatura(15 + (40 - 15) * random.nextDouble()) 
-                    .localizacao("Localizacao " + (i + 1))
+                    .data(LocalDateTime.now())
+                    .temperatura(15 + random.nextDouble() * 10)
+                    .localizacao(localizacao)
                     .build();
             sensors.add(sensor);
         }
-
         return sensors;
     }
 }
