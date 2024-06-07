@@ -8,16 +8,15 @@ create table fiapdv_usuario (
 
 create table fiapdv_sensor (
     sensor_id number(10) primary key,
-    data_hora timestamp not null,
+    data_hora varchar2(21) not null,
     localizacao varchar2(255) not null,
-    temperatura number not null
+    temperatura number(19,17) not null
 );
  
-
 create table fiapdv_relatorio (
     relatorio_id number(10) primary key,
-    data_inicio timestamp not null,
-    data_fim timestamp not null,
+    data_inicio varchar2(21) not null,
+    data_fim varchar2(21) not null,
     localizacao varchar2(255) not null,
     temperatura_media number,
     temperatura_maxima number,
