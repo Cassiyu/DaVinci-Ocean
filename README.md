@@ -60,10 +60,10 @@ Retorna um array com todos os sensores cadastrados.
 ```json
 [
     {
-        "sensorId": 1,
+        "sensor_id": 1,
         "data": "27-05-2024T14:00:00",
         "temperatura": 25.5,
-        "localizacao": "-23.5505, -46.6333"
+        "localizacao": "Recife 1"
     }   
 ]
 ```
@@ -95,17 +95,17 @@ Cadastra um sensor com os dados enviados no corpo da requisição.
 {
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "localizacao": "-23.5505, -46.6333"
+    "localizacao": "Recife 1"
 }
 ```
 
 #### Exemplo de Resposta
 ```js
 {
-    "sensorId": 1,
+    "sensor_id": 1,
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "localizacao": "-23.5505, -46.6333"
+    "localizacao": "Recife 1"
 }
 ```
 
@@ -128,10 +128,10 @@ Retorna os detalhes do sensor com o `id` informado no path.
 ```js
 // GET /sensor/1
 {
-    "sensorId": 1,
+    "sensor_id": 1,
     "data": "27-05-2024T14:00:00",
     "temperatura": 25.5,
-    "localizacao": "-23.5505, -46.6333"
+    "localizacao": "Recife 1"
 }
 
 ```
@@ -180,17 +180,17 @@ Atualiza os dados do sensor com o `id` informado no path, utilizando as informa�
 {
     "data": "28-05-2024T14:00:00",
     "temperatura": 26.0,
-    "localizacao": "-23.5505, -46.6333"
+    "localizacao": "Recife 1"
 }
 ```
 
 #### Exemplo de Resposta
 ```js
 {
-    "sensorId": 1,
+    "sensor_id": 1,
     "data": "28-05-2024T14:00:00",
     "temperatura": 26.0,
-    "localizacao": "-23.5505, -46.6333"
+    "localizacao": "Recife 1"
 }
 ```
 
@@ -214,20 +214,20 @@ Gera um relatório de temperatura para um determinado período e localização.
 
 |campo|tipo|obrigatório|descrição|
 |-----|----|:-----------:|---------|
-|dataInicio|datetime|✅|Data e hora de início do período|
-|dataFim|datetime|✅|Data e hora de fim do período|
+|data_inicio|datetime|✅|Data e hora de início do período|
+|data_fim|datetime|✅|Data e hora de fim do período|
 |localizacao|string|✅|Localização para o relatório|
 
 #### Exemplo de Resposta
 
 ```json
 {
-    "dataInicio": "01-05-2024T00:00:00",
-    "dataFim": "31-05-2024T23:59:59",
-    "localizacao": "Praia de Copacabana",
-    "temperaturaMedia": 24.3,
-    "temperaturaMaxima": 29.5,
-    "temperaturaMinima": 18.7
+    "data_inicio": "01-05-2024T00:00:00",
+    "data_fim": "31-05-2024T23:59:59",
+    "localizacao": "Recife 1",
+    "temperatura_media": 24.3,
+    "temperatura_maxima": 29.5,
+    "temperatura_minima": 18.7
 }
 ```
 
